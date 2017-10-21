@@ -14,7 +14,7 @@
     -ms-user-select: none;
     user-select: none;
     background-image: none;
-    border: 1px solid transparent;
+    border: 5px solid transparent;
     border-radius: 4px;
 }
 /*Also */
@@ -36,7 +36,9 @@
     margin: 0;
     opacity: 0;
     -ms-filter:'alpha(opacity=0)';
-    font-size: 200px;
     direction: ltr;
     cursor: pointer;
 }
+#mapholder {
+        height: 100%;
+      }
