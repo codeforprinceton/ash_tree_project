@@ -23,7 +23,7 @@
  
 
          
-<!--Get Geolocation-->      
+<!--Get Geolocation     
 <button onclick="getLocation()">Get Geolocation </button>
 <p id="demo"> </p>
 
@@ -42,10 +42,10 @@ function showPosition(position) {
     x.innerHTML = "Latitude: " + position.coords.latitude + 
     "<br>Longitude: " + position.coords.longitude;
 }
-</script>
+</script>-->
          
 
-<!--Map location
+<!--Map location-->
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?callback=initMap"> </script>
    
@@ -62,6 +62,7 @@ function getLocation() {
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
+
 
 function showPosition(position) {
     var latlon = position.coords.latitude + "," + position.coords.longitude;
@@ -86,8 +87,13 @@ function showError(error) {
             break;
     }
 }
+
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;
+}
    
-</script> -->
+</script> 
 
    
    
