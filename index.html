@@ -25,7 +25,6 @@
          
 <!--Get Geolocation      
 <button onclick="getLocation()">Get Geolocation </button>
-
 <p id="demo"> </p>
 
 <script>
@@ -47,9 +46,7 @@ function showPosition(position) {
          
 
 <!--Map location-->   
-
 <button onclick="getLocation()">Map me</button>
-
 <div id="mapholder"></div>
 
 <script>
@@ -70,6 +67,7 @@ function showPosition(position) {
     document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
 }
 //To use this code on your website, get a free API key from Google.
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
 //Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 
 function showError(error) {
