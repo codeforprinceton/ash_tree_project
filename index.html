@@ -52,11 +52,12 @@ function getLocation() {
 
 function showPosition(position) {
     var mylatlon =  new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-    var marker = new google.maps.Marker({
+    var mymarker = new google.maps.Marker({
     position: mylatlon,
     map: mymap,
     title: 'blah!'
-  });
+  }); 
+   mymap.panTo(mymarker.getPosition());
 }
 
 function showError(error) {
