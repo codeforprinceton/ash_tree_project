@@ -40,3 +40,6 @@
     direction: ltr;
     cursor: pointer;
 }
+#mapholder {
+        height: 100%;
+      }
