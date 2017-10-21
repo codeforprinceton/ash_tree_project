@@ -31,7 +31,9 @@
    
 <button onclick="getLocation()">Map me</button>
 <div id="mapholder"></div>
-
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8PHbWdt77mc0Bpy7J9-NO5IFzh-V-NG4&callback=initMap"> </script>
+</script>
 <script>
 var x = document.getElementById("mapholder");
 var mymap;
@@ -49,8 +51,7 @@ function getLocation() {
 
 
 function showPosition(position) {
-    var mylatlon = {lat: -25.363, lng: 131.044};
-   <!-- new google.maps.LatLng(position.coords.latitude, position.coords.longitude);-->
+    var mylatlon =  new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
     var marker = new google.maps.Marker({
     position: mylatlon,
     map: mymap,
@@ -77,9 +78,7 @@ function showError(error) {
   
    </script>
 
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8PHbWdt77mc0Bpy7J9-NO5IFzh-V-NG4&callback=initMap"> </script>
-</script>
+
 
    
    
