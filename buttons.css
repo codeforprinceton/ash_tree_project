@@ -61,7 +61,6 @@ body{
   font-size: 10em;
   color: #cf483e;
   text-shadow: 0 0 1px #000; 
-  animation: bounce 1s linear 3;
 }
 button{
   box-shadow: 0 0 1px #000; 
@@ -77,10 +76,6 @@ button{
   font-size: 3em;
 }
 span{font-size:.7em;color: #777;}
-@keyframes bounce {
-	/* thx to https://github.com/daneden/animate.css */
-  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-	40% {transform: translateY(-15px);}
-	60% {transform: translateY(-7px);}
+
 }
 
