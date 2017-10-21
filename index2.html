@@ -2,97 +2,26 @@
    type = "text/css"
    href = "buttons.css" />
 <center>
-   
-<!--Take Pictures-->
-   
-<p>   TAKE PICTURES</p>
-   <!--Push pictures to storage-->
-<form action="https://s3.amazonaws.com/ash-tree-photos" method="post" enctype="multipart/form-data">
-      <input type="hidden" name="key" value="uploads/${filename}">
 
-  <p><span class="btn btn-success fileinput-button"><img src="images/tree.jpg" alt="Tree" align="middle" width="20%">   &nbsp;&nbsp;  
-         <span>Tree</span>
-         <input type="file" accept="image/*" name="file">    </span></p>
-    
-   <p><img src="images/Leaf.jpg" alt="Leaf" align="middle" width="20%">   &nbsp;&nbsp;  
-         <span class="btn btn-success fileinput-button"><span>Leaf</span>
-         <input type="file" accept="image/*" name="leaf">   </span></p>
-    
-   <p><img src="images/bark.jpg" alt="Bark" align="middle" width="20%">   &nbsp;&nbsp;  
-         <span class="btn btn-success fileinput-button"><span>Bark</span>
-         <input type="file" accept="image/*" name="bark">   </span></p>
-   <!--Exit Form Button-->
-   <p> <input type="submit" value="All done"></p>
-  </form>
-
-<!-- Map location -->
-
-   
-   
 <button onclick="getLocation()">Map me</button>
 <div id="mapholder"></div>
 
-<script>
-var x = document.getElementById("mapholder");
-var mymap;
-
-function initMap() {
-   var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
-var mapOptions = {
-  zoom: 4,
-  center: myLatlng
-}
-     mymap = new google.maps.Map(x);
-      }
-   
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition, showError);
-    } else {
-        mymapholder.innerHTML = "Geolocation is not supported by this browser.";
-    }
-}
+   <script>
+      var x = document.getElementById("mapholder");
+      function getLocation() {
+         if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+         } else { 
+            x.innerHTML = "Geolocation is not supported by this browser.";
+         }
 
 
-function showPosition(position) {
-    var mylatlon =  new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-    var mymarker = new google.maps.Marker({
-    position: mylatlon,
-    map: mymap,
-    title: 'blah!'
-  }); 
-   mymap.panTo(mymarker.getPosition());
-}
-
-function showError(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            x.innerHTML = "User denied the request for Geolocation."
-            break;
-        case error.POSITION_UNAVAILABLE:
-            x.innerHTML = "Location information is unavailable."
-            break;
-        case error.TIMEOUT:
-            x.innerHTML = "The request to get user location timed out."
-            break;
-        case error.UNKNOWN_ERROR:
-            x.innerHTML = "An unknown error occurred."
-            break;
-    }
-}
+         function showPosition(position) {
+            x.innerHTML = "Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude;
+         }
+  </script>   
   
-   </script>
-
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8PHbWdt77mc0Bpy7J9-NO5IFzh-V-NG4&callback=initMap"> </script>
-
-   
-   
-   
-   
-         
-
-  </center>
+</center>
 
 
 
