@@ -22,12 +22,13 @@
    <p><img src="images/bark.jpg" alt="Bark" align="middle" width="20%">   &nbsp;&nbsp;  
          <span class="btn btn-success fileinput-button"><span>Bark</span>
          <input type="file" accept="image/*" name="bark">   </span></p>
-   <!--Exit Form Button-->
+ 
+<!--Exit Form Button-->
    <p> <input type="submit" value="All done"></p>
   </form>
 
          
-<!--Get Geolocation-->    
+<!--Get Geolocation
 <button onclick="getLocation()">Get Geolocation </button>
 <p id="demo"> </p>
 
@@ -46,10 +47,10 @@ function showPosition(position) {
     x.innerHTML = "Latitude: " + position.coords.latitude + 
     "<br>Longitude: " + position.coords.longitude;
 }
-</script>
+</script> -->    
          
 
-<!--Map location
+<!--Map location-->    
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?callback=initMap"> </script>
    
@@ -91,22 +92,17 @@ function showError(error) {
             break;
     }
 }
-
-function showPosition(position) {
+   </script> 
+   
+<!--function showPosition(position) {
     x.innerHTML = "Latitude: " + position.coords.latitude + 
-    "<br>Longitude: " + position.coords.longitude;
-}
+    "<br>Longitude: " + position.coords.longitude; 
+} -->    
    
-</script> -->
+
 
    
    
-   
-   
-         
-
-  </center>
-
 
 
 
