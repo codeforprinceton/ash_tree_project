@@ -34,10 +34,11 @@
 
 <script>
 var x = document.getElementById("mapholder");
-var map;
-      function initMap() {
-        map = new google.maps.Map(x);
+var mymap;
+function initMap() {
+        mymap = new google.maps.Map(x);
       }
+   
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition, showError);
@@ -49,10 +50,11 @@ function getLocation() {
 
 function showPosition(position) {
     var latlon = position.coords.latitude + "," + position.coords.longitude;
-    var img_url = "https://maps.googleapis.com/maps/api/js?key=AIzaSyB8PHbWdt77mc0Bpy7J9-NO5IFzh-V-NG4&center="
-    +latlon+"&zoom=14&size=400x300";
-    document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
-    
+    var marker = new google.maps.Marker({
+    position: latlon,
+    map: mymap,
+    title: 'blah!'
+  });
 }
 
 function showError(error) {
