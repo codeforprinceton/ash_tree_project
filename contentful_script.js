@@ -62,3 +62,8 @@ $(document).on("click", "#upload", function(){
   .then((entry) => refresh())
   .catch(console.error)
 });
+
+// check box on file select
+$('input').on("change", function(event){
+  console.log(event.currentTarget.value)
+});
