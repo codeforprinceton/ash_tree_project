@@ -50,7 +50,7 @@ function showPosition(position) {
 </script>
          
 
-<!--Map location
+<!--Map location -->
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?callback=initMap"> </script>
    
@@ -74,6 +74,8 @@ function showPosition(position) {
     var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="
     +latlon+"&zoom=14&size=400x300&key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU";
     document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;
 }
 
 function showError(error) {
@@ -93,12 +95,8 @@ function showError(error) {
     }
 }
 
-function showPosition(position) {
-    x.innerHTML = "Latitude: " + position.coords.latitude + 
-    "<br>Longitude: " + position.coords.longitude;
-}
-   
-</script> -->
+
+</script>
 
    
    
