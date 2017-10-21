@@ -49,7 +49,7 @@ function getLocation() {
 
 function showPosition(position) {
     var latlon = position.coords.latitude + "," + position.coords.longitude;
-    var img_url = "https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyB8PHbWdt77mc0Bpy7J9-NO5IFzh-V-NG4&center="
+    var img_url = "https://maps.googleapis.com/maps/api/js?key=AIzaSyB8PHbWdt77mc0Bpy7J9-NO5IFzh-V-NG4&center="
     +latlon+"&zoom=14&size=400x300";
     document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
     
