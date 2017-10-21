@@ -1,24 +1,55 @@
-<link rel = "stylesheet"
-   type = "text/css"
-   href = "buttons.css" />
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Bootstrap</title>
+    <!-- HEAD SECTION -->
+
+    <!-- IE Edge Meta Tag -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Optional Theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+
+    <!-- Optional IE8 Support -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- The following file can be useful for overriding Bootstrap's styles -->
+    <link rel="stylesheet" href="contentful_overrides.css">
+    <link rel = "stylesheet"
+       type = "text/css"
+       href = "buttons.css" />
+    <script type="text/javascript" src="scripts/bundle.js"></script>
+  </head>
+  <body>
+
 <center>
-   
+
 <!--Take Pictures-->
-   
+
 <p>   TAKE PICTURES</p>
    <!--Push pictures to storage-->
 <form action="https://s3.amazonaws.com/ash-tree-photos" method="post" enctype="multipart/form-data">
       <input type="hidden" name="key" value="uploads/${filename}">
 
-  <p><span class="btn btn-success fileinput-button"><img src="images/tree.jpg" alt="Tree" align="middle" width="20%">   &nbsp;&nbsp;  
+  <p><span class="btn btn-success fileinput-button"><img src="images/tree.jpg" alt="Tree" align="middle" width="20%">   &nbsp;&nbsp;
          <span>Tree</span>
          <input type="file" accept="image/*" name="file">    </span></p>
-    
-   <p><img src="images/Leaf.jpg" alt="Leaf" align="middle" width="20%">   &nbsp;&nbsp;  
+
+   <p><img src="images/Leaf.jpg" alt="Leaf" align="middle" width="20%">   &nbsp;&nbsp;
          <span class="btn btn-success fileinput-button"><span>Leaf</span>
          <input type="file" accept="image/*" name="leaf">   </span></p>
-    
-   <p><img src="images/bark.jpg" alt="Bark" align="middle" width="20%">   &nbsp;&nbsp;  
+
+   <p><img src="images/bark.jpg" alt="Bark" align="middle" width="20%">   &nbsp;&nbsp;
          <span class="btn btn-success fileinput-button"><span>Bark</span>
          <input type="file" accept="image/*" name="bark">   </span></p>
    <!--Exit Form Button-->
@@ -27,8 +58,8 @@
 
 <!-- Map location -->
 
-   
-   
+
+
 <button onclick="getLocation()">Map me</button>
 <div id="mapholder"></div>
 
@@ -52,7 +83,7 @@ function showPosition(position) {
     var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="
     +latlon+"&zoom=14&size=400x300";
     document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
-    
+
 }
 
 function showError(error) {
@@ -71,24 +102,26 @@ function showError(error) {
             break;
     }
 }
-  
+
    </script>
 
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?callback=initMap"> </script>
-</script>
+  <script async defer
+      src="https://maps.googleapis.com/maps/api/js?callback=initMap"> </script>
+  </script>
 
-   
-   
-   
-   
-         
 
   </center>
+    <!-- FOOTER SECTION - Before closing </body> tag -->
 
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
+    <!-- Minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <!-- My custom js -->
+    <script src="contentful_script.js"></script>
+    <script src="compress.js"></script>
 
-
-
-
+  </body>
+</html>
