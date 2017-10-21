@@ -2,7 +2,7 @@ var input = document.querySelector("input[type=file]");
 
 input.addEventListener("change", function () {
   var file = input.files[0];
-  drawOnCanvas(file);
+  compress(file);
 };
 
 function compress(source_img_obj) {	
