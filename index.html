@@ -49,7 +49,7 @@ function getLocation() {
 
 
 function showPosition(position) {
-    var latlon = position.coords.latitude + "," + position.coords.longitude;
+    var latlon = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
     var marker = new google.maps.Marker({
     position: latlon,
     map: mymap,
