@@ -1,0 +1,76 @@
+<link rel = "stylesheet"
+   type = "text/css"
+   href = "buttons.css" />
+<center>
+
+<div id="mapholder"></div>
+
+   <script>
+      var x = document.getElementById("mapholder");
+      function getLocation() {
+         if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+         } else { 
+            x.innerHTML = "Geolocation is not supported by this browser.";
+         }
+
+   var mymap;
+
+function initMap() {
+   var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+var mapOptions = {
+  zoom: 4,
+  center: myLatlng
+}
+     mymap = new google.maps.Map(x);
+      }
+   
+
+
+
+function showPosition(position) {
+    var mylatlon =  new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    var mymarker = new google.maps.Marker({
+    position: mylatlon,
+    map: mymap,
+    title: 'blah!'
+  }); 
+   mymap.panTo(mymarker.getPosition());
+}
+
+function showError(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            x.innerHTML = "User denied the request for Geolocation."
+            break;
+        case error.POSITION_UNAVAILABLE:
+            x.innerHTML = "Location information is unavailable."
+            break;
+        case error.TIMEOUT:
+            x.innerHTML = "The request to get user location timed out."
+            break;
+        case error.UNKNOWN_ERROR:
+            x.innerHTML = "An unknown error occurred."
+            break;
+    }
+}
+  
+   </script>
+
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8PHbWdt77mc0Bpy7J9-NO5IFzh-V-NG4&callback=initMap"> </script>
+
+   
+   
+   
+   
+         
+
+  </center>
+
+
+
+
+
+
+
