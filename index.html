@@ -5,7 +5,8 @@
    href = "buttons.css" />
 <center>
    
-<!-----------------------------------Take Pictures---------------------------------------->
+<!--Take Pictures-->
+   
 <p>   TAKE PICTURES</p>
    
   <p><img src="images/tree.jpg" alt="Tree" align="middle" width="20%">   &nbsp;&nbsp;  
@@ -22,7 +23,7 @@
  
 
          
- <!-----------------------------------Get Geolocation---------------------------------------->        
+<!--Get Geolocation-->        
 <button onclick="getLocation()">geolocate me</button>
 
 <p id="demo"> </p>
@@ -46,13 +47,13 @@ function showPosition(position) {
          
 
          
-<!-----------------------------------Exit Form Button---------------------------------------->
+<!--Exit Form Button-->
 <p> <input type="submit" value="All done"></p>
   </center>
 
 
 
-<!-----------------------------------Push pictures to storage---------------------------------------->
+<!--Push pictures to storage-->
 <form action="https://s3.amazonaws.com/ash-tree-photos" method="post" enctype="multipart/form-data">
       <input type="hidden" name="key" value="uploads/${filename}">
 
