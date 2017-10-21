@@ -52,10 +52,6 @@ html{
 body{
   background: #fff;
   font-family: 'Open Sans', sans-serif;
-  max-width: 380px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 0 1px #000; 
   margin: 1em auto;
   padding: 0 1em 1em 1em;
   text-align: center;
