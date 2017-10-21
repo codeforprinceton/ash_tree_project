@@ -8,7 +8,9 @@
 <!--Take Pictures-->
    
 <p>   TAKE PICTURES</p>
-   
+   <!--Push pictures to storage-->
+<form action="https://s3.amazonaws.com/ash-tree-photos" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="key" value="uploads/${filename}">
   <p><img src="images/tree.jpg" alt="Tree" align="middle" width="20%">   &nbsp;&nbsp;  
          <span class="btn btn-success fileinput-button"><span>Tree</span>
          <input type="file" accept="image/*" name="file">    </span></p>
@@ -20,7 +22,7 @@
    <p><img src="images/bark.jpg" alt="Bark" align="middle" width="20%">   &nbsp;&nbsp;  
          <span class="btn btn-success fileinput-button"><span>Bark</span>
          <input type="file" accept="image/*" name="bark">   </span></p>
- 
+  </form>
 
          
 <!--Get Geolocation-->    
@@ -106,9 +108,7 @@ function showPosition(position) {
 
 
 
-<!--Push pictures to storage-->
-<form action="https://s3.amazonaws.com/ash-tree-photos" method="post" enctype="multipart/form-data">
-      <input type="hidden" name="key" value="uploads/${filename}">
 
 
-   </form>
+
+
