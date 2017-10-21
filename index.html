@@ -31,21 +31,25 @@
    
 <button onclick="getLocation()">Map me</button>
 <div id="mapholder"></div>
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8PHbWdt77mc0Bpy7J9-NO5IFzh-V-NG4&callback=initMap"> </script>
-</script>
+
 <script>
 var x = document.getElementById("mapholder");
 var mymap;
+
 function initMap() {
-        mymap = new google.maps.Map(x);
+   var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+var mapOptions = {
+  zoom: 4,
+  center: myLatlng
+}
+     mymap = new google.maps.Map(x);
       }
    
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition, showError);
     } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
+        mymapholder.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
 
@@ -79,7 +83,8 @@ function showError(error) {
   
    </script>
 
-
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8PHbWdt77mc0Bpy7J9-NO5IFzh-V-NG4&callback=initMap"> </script>
 
    
    
