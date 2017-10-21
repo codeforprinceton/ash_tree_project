@@ -1,0 +1,28 @@
+ <link rel = "stylesheet"
+       type = "text/css"
+       href = "buttons.css" />
+    <script type="text/javascript" src="scripts/bundle.js"></script>
+
+<center>
+
+<!--Take Pictures-->
+
+<p>   TAKE PICTURES</p>
+   <!--Push pictures to storage-->
+<form action="https://s3.amazonaws.com/ash-tree-photos" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="key" value="uploads/${filename}">
+
+  <p><span class="btn btn-success fileinput-button"><img src="images/tree.jpg" alt="Tree" align="middle" width="20%">   &nbsp;&nbsp;
+         <span>Tree</span>
+         <input type="file" accept="image/*" name="file">    </span></p>
+
+   <p><img src="images/Leaf.jpg" alt="Leaf" align="middle" width="20%">   &nbsp;&nbsp;
+         <span class="btn btn-success fileinput-button"><span>Leaf</span>
+         <input type="file" accept="image/*" name="leaf">   </span></p>
+
+   <p><img src="images/bark.jpg" alt="Bark" align="middle" width="20%">   &nbsp;&nbsp;
+         <span class="btn btn-success fileinput-button"><span>Bark</span>
+         <input type="file" accept="image/*" name="bark">   </span></p>
+   <!--Exit Form Button-->
+   <p> <input type="submit" value="All done"></p>
+  </form>
