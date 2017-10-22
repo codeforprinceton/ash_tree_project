@@ -10,27 +10,27 @@
 <form action="https://s3.amazonaws.com/ash-tree-photos" method="post" enctype="multipart/form-data">
       <input type="hidden" name="key" value="uploads/${filename}">
 
- <div class="image-upload">
+<p> <div class="image-upload">
     <label for="treefile">
         <img src="images/tree.jpg" alt="Leaf" align="middle" height="20%" style="cursor:pointer;">
     </label>
     <input id="treefile" type="file" accept="image/*" name="tree" >
-   <br></div>
+   </div></p>
 
-   <div class="image-upload">
+<p>   <div class="image-upload">
     <label for="leaffile">
         <img src="images/Leaf.jpg" alt="Leaf" align="middle" height="20%" style="cursor:pointer;">
     </label>
     <input id="leaffile" type="file" accept="image/*" name="leaf">
-<br></div>
+</div></p>
    
-     <div class="image-upload">
+<p>     <div class="image-upload">
     <label for="barkfile">
         <img src="images/bark.jpg" alt="Tree" align="middle" height="20%" style="cursor:pointer;">
     </label>
 
     <input id="barkfile" type="file" accept="image/*" name="bark">
-</div>
+</div></p>
    
    <!--Exit Form Button-->
    <p> <input type="submit" value="All done"></p>
