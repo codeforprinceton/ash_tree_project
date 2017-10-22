@@ -43,6 +43,11 @@ body {
   text-align: center;
 }
 
+.text {
+	font-size:1em;
+	text-align: center;
+}
+
 #seal {
 	display: block;
 	margin:auto;
@@ -50,7 +55,7 @@ body {
 
 a {
 	text-decoration: none;
-	color: rgba(0,0,80,1);
+	color: rgba(255,255,255,1);
 }
 
 #footer {
