@@ -3,12 +3,12 @@
 {
     display: none;
 }
-.image-upload > input
+#leaffile
 {
     display: none;
 }
-.image-upload img
+#barkfile
 {
-    width: 180px;
+    display: none;
     cursor: pointer;
 }
