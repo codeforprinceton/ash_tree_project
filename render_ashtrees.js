@@ -28,7 +28,7 @@ function paintEntries (photo, entry) {
   console.log(photo)
   console.log(entry)
   var $photo = $("<div class='well well-sm'>" + photo.fields.datetime[lang] + " / " + photo.fields.latlong[lang].lat + ":" + photo.fields.latlong[lang].lon + "</div>")
-  var $img = $("<img src=" + entry.fields.s3url + ">");
+  var $img = $("<img width='250px' src='" + photo.fields.s3url[lang] + "'>");
   $photo.append($img);
   $('#ashtree-row').append($photo)
 }
@@ -38,13 +38,10 @@ function renderPhotos (data) {
   $('#ashtree-row').empty()
   if( data.length > 0 ) {
     $.each( data, function( i, photo ){
-
-      client.getSpace(space_id)
-      .then((space) => space.getEntry(photo.sys.id))
-      .then((entry) => console.log(entry))
-      .catch(console.error);
-
+      console.log(photo)
       var $photo = $("<div class='well well-sm'>" + photo.fields.datetime[lang] + " / " + photo.fields.latlong[lang].lat + ":" + photo.fields.latlong[lang].lon + "</div>")
+      var $img = $("<img width='250px' src='" + photo.fields.s3url[lang] + "'>");
+      $photo.append($img);
       $('#ashtree-row').append($photo)
 
     });

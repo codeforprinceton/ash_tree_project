@@ -49,6 +49,11 @@ function createAshTreeImages(entry) {
   .catch(console.error)
 }
 
+function done(entry){
+  console.log(entry)
+  alert("done!")
+}
+
 function createAshTree(data) {
   var d = new Date();
   var n = d.toISOString();
@@ -63,10 +68,13 @@ function createAshTree(data) {
       },
       datetime: {
         'en-US': n
+      },
+      s3url: {
+        'en-US': 'https://s3.amazonaws.com/ash-tree-photos/' + img_name
       }
     }
   }))
-  .then((entry) => createAshTreeImages(entry))//refresh())
+  .then((entry) => done(entry))//refresh())
   .catch(console.error)
 }
 
@@ -111,7 +119,6 @@ $(document).on("click", "#upload", function(){
       processData: false,
       data: formData
     }).done(function(e){
-              alert('done!');
               getPreciseLocation()
                 .then(createAshTree);
           });
