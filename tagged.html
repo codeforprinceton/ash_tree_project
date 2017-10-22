@@ -26,12 +26,22 @@
     <!-- The following file can be useful for overriding Bootstrap's styles -->
     <link rel="stylesheet" href="contentful_overrides.css">
     <script type="text/javascript" src="scripts/bundle.js"></script>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #mymap {
+        height: 300px;
+        width:300px;
+      }
+    </style>
   </head>
   <body>
 
   <!-- Here we can see the difference between a fluid and fixed-width container by adjusting our browser size. -->
   <div class="container gallery">
     <h1>Ash Trees</h1>
+    <center><div id="mymap"></div></center>
+    <br><br>
     <div id="ashtree-row" class="row"></div>
     <div id="photo-row" class="row"></div>
   </div>
@@ -80,6 +90,10 @@
 
     <!-- My custom js -->
     <script src="render_ashtrees.js"></script>
+
+
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8PHbWdt77mc0Bpy7J9-NO5IFzh-V-NG4&callback=initMap"
+   async defer></script>
 
   </body>
 </html>

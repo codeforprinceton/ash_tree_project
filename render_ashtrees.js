@@ -25,8 +25,8 @@ function assetEndpoint(asset_id) {
 }
 
 function paintEntries (photo, entry) {
-  console.log(photo)
-  console.log(entry)
+  mylat.push(photo.fields.latlong[lang].lat)
+  mylon.push(photo.fields.latlong[lang].lon)
   var $photo = $("<div class='well well-sm'>" + photo.fields.datetime[lang] + " / " + photo.fields.latlong[lang].lat + ":" + photo.fields.latlong[lang].lon + "</div>")
   var $img = $("<img width='250px' src='" + photo.fields.s3url[lang] + "'>");
   $photo.append($img);
@@ -38,15 +38,42 @@ function renderPhotos (data) {
   $('#ashtree-row').empty()
   if( data.length > 0 ) {
     $.each( data, function( i, photo ){
-      console.log(photo)
+      mylat.push(photo.fields.latlong[lang].lat)
+      mylon.push(photo.fields.latlong[lang].lon)
       var $photo = $("<div class='well well-sm'>" + photo.fields.datetime[lang] + " / " + photo.fields.latlong[lang].lat + ":" + photo.fields.latlong[lang].lon + "</div>")
       var $img = $("<img width='250px' src='" + photo.fields.s3url[lang] + "'>");
       $photo.append($img);
       $('#ashtree-row').append($photo)
-
     });
+    drawMap();
   }else{
     var $photo = $("<div>No ash trees yet!</div>")
     $('#ashtree-row').append($photo)
   }
+}
+
+var mymap;
+var mylat = [40.3516366];
+var mylon = [-74.6602049];
+
+function initMap() {
+        mymap = new google.maps.Map(document.getElementById('mymap'), {
+           center: {lat: mylat[0], lng: mylon[0]},
+            zoom: 14
+        });
+}
+
+function drawMap() {
+        mymap = new google.maps.Map(document.getElementById('mymap'), {
+           center: {lat: mylat[0], lng: mylon[0]},
+            zoom: 14
+        });
+
+        for (i = 0; i < mylat.length; i++) {
+          mymarker = new google.maps.Marker({
+              position:  {lat: mylat[i], lng: mylon[i]},
+              map: mymap,
+              title: 'blah!'
+          });
+        }
 }
