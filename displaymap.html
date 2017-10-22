@@ -16,27 +16,10 @@
   <body>
  <div id="mymap"></div>
      <script>
-         function getPreciseLocation() {
-  
-             return new Promise(function (resolve, reject) {
-    
-                 navigator.geolocation.getCurrentPosition(function (position) {
-      
-                     resolve([position.coords.latitude, position.coords.longitude]);
-    
-                 });
-  
-             });
-
-         }
-
-         getPreciseLocation()
-                .then(printLatLon);
-         function printLatLon(data) { 
              var mymap;
              function initMap() {
                  mymap = new google.maps.Map(document.getElementById('mymap'), {
-                     center: {lat: data[0], lng: data[1]},
+center: {lat: 40.3072349, lng: -74.6336981},
                      zoom: 8
                  });
                  mymarker = new google.maps.Marker({
@@ -45,7 +28,6 @@
                      title: 'blah!'
                  }); 
              }
-         }
       </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8PHbWdt77mc0Bpy7J9-NO5IFzh-V-NG4&callback=initMap"
     async defer></script>
