@@ -15,11 +15,29 @@
   </head>
   <body>
  <div id="mymap"></div>
-    <script>
-      var mymap;
+     <script>
+         function getPreciseLocation() {
+  
+             return new Promise(function (resolve, reject) {
+    
+                 navigator.geolocation.getCurrentPosition(function (position) {
+      
+                     resolve([position.coords.latitude, position.coords.longitude]);
+    
+                 });
+  
+             });
+
+         }
+
+         getPreciseLocation()
+                .then(printLatLon);
+         function printLatLon(data) { 
+
+             var mymap;
       function initMap() {
         mymap = new google.maps.Map(document.getElementById('mymap'), {
-          center: {lat:    40.3072349, lng: -74.6336981},
+          center: {lat: data[0], lng: data[1]},
           zoom: 8
         });
       }
