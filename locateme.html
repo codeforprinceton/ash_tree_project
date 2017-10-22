@@ -1,3 +1,6 @@
+<button onclick="getPreciseLocation()">Find me</button>
+<div id="loc"></div>
+
 <script>
 function getPreciseLocation() {
   return new Promise(function (resolve, reject) {
@@ -9,5 +12,5 @@ function getPreciseLocation() {
 getPreciseLocation()
                 .then(printLatLon);
                 
-                function printLatLon(data) { console.log('lat:' + data[0] + ' lon:' + data[1]) }
+                function printLatLon(data) { loc.innerHTML="Latitude: " + data[0] + "<Br>Longtitute:" + data[1]) }
                 </script>
