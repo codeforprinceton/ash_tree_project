@@ -11,31 +11,9 @@ var client = contentful.createClient({
   accessToken: accessToken
 })
 
-refresh();
-
-function refresh() {
-  client.getSpace(space_id)
-  .then((space) => space.getEntries(query))
-  .then((response) => renderPhotos(response.items))
-  .catch(console.error)
-}
 
 function assetEndpoint(asset_id) {
   return assetAPI.replace("<asset_id>", asset_id);
-}
-
-//Render AshTrees
-function renderPhotos (data) {
-  $('#ashtree-row').empty()
-  if( data.length > 0 ) {
-    $.each( data, function( i, photo ){
-      var $photo = $("<div class='well well-sm'>" + photo.fields.datetime[lang] + " / " + photo.fields.latlong[lang].lat + ":" + photo.fields.latlong[lang].lon + "</div>")
-      $('#ashtree-row').append($photo)
-    });
-  }else{
-    var $photo = $("<div>No ash trees yet!</div>")
-    $('#ashtree-row').append($photo)
-  }
 }
 
 function getPreciseLocation() {
@@ -47,32 +25,28 @@ function getPreciseLocation() {
 }
 
 function createAshTreeImages(entry) {
-  console.log(entry)
-  // client.getSpace(space_id)
-  // .then((space) => space.createEntry('ashTreeImages', {
-  //   fields: {
-  //     s3url: {
-  //       'en-US': {
-  //         lat: data[0],
-  //         lon: data[1]
-  //       }
-  //     },
-  //     imageType: {
-  //       'en-US': n
-  //     },
-  //     ashTree: {
-  //       'en-US': {
-  //         sys: {
-  //           type: 'Link',
-  //           linkType: 'Entry',
-  //           id: '4MA2xHUeLeKaAs2K4Kqiog'
-  //         }
-  //       }
-  //     }
-  //   }
-  // }))
-  // .then((entry) => createAshTreeImages(entry))//refresh())
-  // .catch(console.error)
+  client.getSpace(space_id)
+  .then((space) => space.createEntry('ashTreeImages', {
+    fields: {
+      s3url: {
+        'en-US': 'https://s3.amazonaws.com/ash-tree-photos/' + img_name
+      },
+      imageType: {
+        'en-US': 'Tree'
+      },
+      ashTree: {
+        'en-US': {
+          sys: {
+            type: 'Link',
+            linkType: 'Entry',
+            id: entry.sys.id
+          }
+        }
+      }
+    }
+  }))
+  .then((entry) => console.log(entry))
+  .catch(console.error)
 }
 
 function createAshTree(data) {
