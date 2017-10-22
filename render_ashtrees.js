@@ -40,10 +40,17 @@ function renderPhotos (data) {
     $.each( data, function( i, photo ){
       mylat.push(photo.fields.latlong[lang].lat)
       mylon.push(photo.fields.latlong[lang].lon)
-      var $photo = $("<div class='well well-sm'>" + photo.fields.datetime[lang] + " / " + photo.fields.latlong[lang].lat + ":" + photo.fields.latlong[lang].lon + "</div>")
-      var $img = $("<img width='250px' src='" + photo.fields.s3url[lang] + "'>");
-      $photo.append($img);
-      $('#ashtree-row').append($photo)
+      var $media = $("<div class='media'>");
+      var $img = $("<div class='media-left'><img class='d-flex mr-3' width='250px' src='" + photo.fields.s3url[lang] + "'></div>");
+      var $photo = $("<div class='media-body'>" + photo.fields.datetime[lang] + " / " + photo.fields.latlong[lang].lat + ":" + photo.fields.latlong[lang].lon + "</div>")
+      $media.append($img);
+      $media.append($photo);
+      $('#ashtree-row').append($media)
+      
+      //var $photo = $("<div class='well well-sm'>" + photo.fields.datetime[lang] + " / " + photo.fields.latlong[lang].lat + ":" + photo.fields.latlong[lang].lon + "</div>")
+      //var $img = $("<img width='250px' src='" + photo.fields.s3url[lang] + "'>");
+      //$photo.append($img);
+      //$('#ashtree-row').append($photo)
     });
     drawMap();
   }else{
