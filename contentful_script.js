@@ -24,9 +24,8 @@ function assetEndpoint(asset_id) {
   return assetAPI.replace("<asset_id>", asset_id);
 }
 
-//Render Comments
+//Render AshTrees
 function renderPhotos (data) {
-  console.log(data)
   $('#ashtree-row').empty()
   if( data.length > 0 ) {
     $.each( data, function( i, photo ){
@@ -47,10 +46,38 @@ function getPreciseLocation() {
   });
 }
 
-function printLatLon(data) {
+function createAshTreeImages(entry) {
+  console.log(entry)
+  // client.getSpace(space_id)
+  // .then((space) => space.createEntry('ashTreeImages', {
+  //   fields: {
+  //     s3url: {
+  //       'en-US': {
+  //         lat: data[0],
+  //         lon: data[1]
+  //       }
+  //     },
+  //     imageType: {
+  //       'en-US': n
+  //     },
+  //     ashTree: {
+  //       'en-US': {
+  //         sys: {
+  //           type: 'Link',
+  //           linkType: 'Entry',
+  //           id: '4MA2xHUeLeKaAs2K4Kqiog'
+  //         }
+  //       }
+  //     }
+  //   }
+  // }))
+  // .then((entry) => createAshTreeImages(entry))//refresh())
+  // .catch(console.error)
+}
+
+function createAshTree(data) {
   var d = new Date();
   var n = d.toISOString();
-  console.log(n)
   client.getSpace(space_id)
   .then((space) => space.createEntry('ashTree', {
     fields: {
@@ -65,20 +92,20 @@ function printLatLon(data) {
       }
     }
   }))
-  .then((entry) => refresh())
+  .then((entry) => createAshTreeImages(entry))//refresh())
   .catch(console.error)
 }
 
 var input = document.querySelector("input[type=file]");
 var result_image_obj = '';
-var orig_img;
+var img_name;
 
 input.addEventListener("change", function () {
-
-  // createImageBitmap(input.files[0])
-  //   .then(response => {
-  //     compress(response);
-  //   });
+  img_name = input.files[0].name;
+  createImageBitmap(input.files[0])
+    .then(response => {
+      compress(response);
+    });
 });
 
 function compress(source_img_obj) {
@@ -87,40 +114,8 @@ function compress(source_img_obj) {
     cvs.height = source_img_obj.height;
     var ctx = cvs.getContext("2d").drawImage(source_img_obj, 0, 0);
     var newImageData = cvs.toDataURL("image/jpeg", 0.5);
-    //var result_image_obj = new Image();
-    // var result_image_obj = new FileReader();
     result_image_obj = newImageData;
-    // console.log(result_image_obj)
-	  // input.files[0] = result_image_obj;
-    // console.log(input.files[0])
 }
-
-$( "#uploadImage" ).submit(function( event ) {
-  orig_img = input.files[0];
-  // var formData = new FormData(orig_img);
-  // formData.append('picture', orig_img);
-  var form_data = new FormData();
-    form_data.append('key', orig_img.name);
-    form_data.append('file', orig_img);
-
-    for (var key of form_data.entries()) {
-        console.log(key[1]);
-    }
-
-  var url = "https://s3.amazonaws.com/ash-tree-photos";
-
-  $.ajax({
-      url: url,
-      type: "POST",
-      cache: false,
-      contentType: false,
-      processData: false,
-      data: form_data
-    }).done(function(e){
-              alert('done!');
-          });
-  event.preventDefault();
-});
 
 //Add Photo
 $(document).on("click", "#upload", function(){
@@ -129,9 +124,10 @@ $(document).on("click", "#upload", function(){
   var url = "https://s3.amazonaws.com/ash-tree-photos";
   var base64ImageContent = result_image_obj.replace(/^data:image\/(png|jpeg);base64,/, "");
   var blob = base64ToBlob(base64ImageContent, 'image/jpeg');
-  var blobFile = new File([blob], "abc.jpg");
+  var blobFile = new File([blob], img_name);
   var formData = new FormData();
-  formData.append('picture', blobFile);
+  formData.append('key', blobFile.name);
+  formData.append('file', blobFile);
 
   $.ajax({
       url: url,
@@ -139,17 +135,12 @@ $(document).on("click", "#upload", function(){
       cache: false,
       contentType: false,
       processData: false,
-      data: input.files[0]
+      data: formData
     }).done(function(e){
               alert('done!');
               getPreciseLocation()
-                .then(printLatLon);
+                .then(createAshTree);
           });
-});
-
-// check box on file select
-$('input').on("change", function(event){
-  console.log(event.currentTarget.value)
 });
 
 function base64ToBlob(base64, mime)
