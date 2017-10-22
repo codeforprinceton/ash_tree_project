@@ -84,6 +84,7 @@ var img_name;
 input.addEventListener("change", function (e) {
   img_name = input.files[0].name;
   console.log(input.files[0]);
+  alert(input.files[0].size);
   var label = $(e.target).prev();
   label.css("border", "green solid 2px");
   createImageBitmap(input.files[0])
