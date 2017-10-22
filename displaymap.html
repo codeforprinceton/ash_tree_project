@@ -17,9 +17,11 @@
  <div id="mymap"></div>
      <script>
              var mymap;
+         var mylat = 40.3516366;
+         var mylon = -74.6602049;
              function initMap() {
                  mymap = new google.maps.Map(document.getElementById('mymap'), {
-center: {lat: 40.3516366, lng: -74.6602049},
+center: {lat: mylat, lng: mylon},
                      zoom: 14
                  });
                  mymarker = new google.maps.Marker({
