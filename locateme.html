@@ -1,5 +1,6 @@
 hello world!
-<button onclick="getPreciseLocation()">Find me</button>
+<button onclick="getPreciseLocation()
+                .then(printLatLon);">Find me</button>
 <div id="loc"></div>
 bye-bye
 <script>
@@ -10,8 +11,7 @@ function getPreciseLocation() {
     });
   });
 }
-getPreciseLocation()
-                .then(printLatLon);
+
                 
                 function printLatLon(data) { loc.innerHTML="Latitude: " + data[0] + "<Br>Longtitute:" + data[1] }
                 </script>
