@@ -44,7 +44,8 @@ body {
 }
 
 #seal {
-	display: inline-block;
+	display: block;
+	margin:auto;
 }
 
 a {
