@@ -81,8 +81,10 @@ var input = document.querySelector("input[type=file]");
 var result_image_obj = '';
 var img_name;
 
-input.addEventListener("change", function () {
+input.addEventListener("change", function (e) {
   img_name = input.files[0].name;
+  var label = $(e.target).prev();
+  label.css("border", "green solid 2px");
   createImageBitmap(input.files[0])
     .then(response => {
       compress(response);

@@ -26,9 +26,6 @@
     <link async rel="stylesheet" type = "text/css" href = "picbuttons.css">
     <!-- The following file can be useful for overriding Bootstrap's styles -->
     <link rel="stylesheet" href="contentful_overrides.css">
-    <link rel = "stylesheet"
-       type = "text/css"
-       href = "buttons.css" />
     <script type="text/javascript" src="scripts/bundle.js"></script>
   </head>
   <body>
@@ -38,47 +35,27 @@
 <!--Take Pictures-->
 
 <p>   TAKE PICTURES</p>
-   <!--Push pictures to storage-->
-<!-- <form id="uploadImage" action="https://s3.amazonaws.com/ash-tree-photos" method="post" enctype="multipart/form-data">
-      <input type="hidden" name="key" value="uploads/${filename}">
-
-  <p><span class="btn btn-success fileinput-button"><img src="images/tree.jpg" alt="Tree" align="middle" width="20%">   &nbsp;&nbsp;
-         <span>Tree</span>
-         <input type="file" accept="image/*" name="file">    </span></p>
-
-   <p><img src="images/Leaf.jpg" alt="Leaf" align="middle" width="20%">   &nbsp;&nbsp;
-         <span class="btn btn-success fileinput-button"><span>Leaf</span>
-         <input type="file" accept="image/*" name="leaf">   </span></p>
-
-   <p><img src="images/bark.jpg" alt="Bark" align="middle" width="20%">   &nbsp;&nbsp;
-         <span class="btn btn-success fileinput-button"><span>Bark</span>
-         <input type="file" accept="image/*" name="bark">   </span></p>
-   Exit Form Button foo
-   <button type="button" id="upload" class="btn btn-primary" value="All done">
-     All done
-   </button>
-  </form>  -->
 
   <form action="https://s3.amazonaws.com/ash-tree-photos" method="post" enctype="multipart/form-data">
         <input type="hidden" name="key" value="uploads/${filename}">
 
   <p> <div class="image-upload">
       <label for="treefile">
-          <img src="images/tree.jpg" alt="Leaf" align="middle" height="20%" style="cursor:pointer;">
+          <img src="images/tree.jpg" alt="Leaf" align="middle" width="60%" style="cursor:pointer;">
       </label>
       <input id="treefile" type="file" accept="image/*" name="file" >
      </div></p>
 
   <p>   <div class="image-upload">
       <label for="leaffile">
-          <img src="images/Leaf.jpg" alt="Leaf" align="middle" height="20%" style="cursor:pointer;">
+          <img src="images/Leaf.jpg" alt="Leaf" align="middle" width="60%" style="cursor:pointer;">
       </label>
       <input id="leaffile" type="file" accept="image/*" name="leaf">
   </div></p>
 
   <p>     <div class="image-upload">
       <label for="barkfile">
-          <img src="images/bark.jpg" alt="Tree" align="middle" height="20%" style="cursor:pointer;">
+          <img src="images/bark.jpg" alt="Tree" align="middle" width="60%" style="cursor:pointer;">
       </label>
 
       <input id="barkfile" type="file" accept="image/*" name="bark">
