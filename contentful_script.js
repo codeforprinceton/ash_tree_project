@@ -11,47 +11,54 @@ var client = contentful.createClient({
   accessToken: accessToken
 })
 
-refresh();
-
-function refresh() {
-  client.getSpace(space_id)
-  .then((space) => space.getEntries(query))
-  .then((response) => renderPhotos(response.items))
-  .catch(console.error)
-}
 
 function assetEndpoint(asset_id) {
   return assetAPI.replace("<asset_id>", asset_id);
 }
 
-//Render Comments
-function renderPhotos (data) {
-  console.log(data)
-  $('#ashtree-row').empty()
-  if( data.length > 0 ) {
-    $.each( data, function( i, photo ){
-      var $photo = $("<div class='well well-sm'>" + photo.fields.datetime[lang] + " / " + photo.fields.latlong[lang].lat + ":" + photo.fields.latlong[lang].lon + "</div>")
-      $('#ashtree-row').append($photo)
+function getPreciseLocation() {
+  return new Promise(function (resolve, reject) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      resolve([position.coords.latitude, position.coords.longitude]);
     });
-  }else{
-    var $photo = $("<div>No ash trees yet!</div>")
-    $('#ashtree-row').append($photo)
-  }
+  });
 }
 
-//Add Photo
-$(document).on("click", "#upload", function(){
-  // Update entry
+function createAshTreeImages(entry) {
+  client.getSpace(space_id)
+  .then((space) => space.createEntry('ashTreeImages', {
+    fields: {
+      s3url: {
+        'en-US': 'https://s3.amazonaws.com/ash-tree-photos/' + img_name
+      },
+      imageType: {
+        'en-US': 'Tree'
+      },
+      ashTree: {
+        'en-US': {
+          sys: {
+            type: 'Link',
+            linkType: 'Entry',
+            id: entry.sys.id
+          }
+        }
+      }
+    }
+  }))
+  .then((entry) => console.log(entry))
+  .catch(console.error)
+}
+
+function createAshTree(data) {
   var d = new Date();
   var n = d.toISOString();
-  console.log(n)
   client.getSpace(space_id)
   .then((space) => space.createEntry('ashTree', {
     fields: {
       latlong: {
         'en-US': {
-          lat: 40.3514318,
-          lon: -74.66029929999999
+          lat: data[0],
+          lon: data[1]
         }
       },
       datetime: {
@@ -59,11 +66,76 @@ $(document).on("click", "#upload", function(){
       }
     }
   }))
-  .then((entry) => refresh())
+  .then((entry) => createAshTreeImages(entry))//refresh())
   .catch(console.error)
+}
+
+var input = document.querySelector("input[type=file]");
+var result_image_obj = '';
+var img_name;
+
+input.addEventListener("change", function () {
+  img_name = input.files[0].name;
+  createImageBitmap(input.files[0])
+    .then(response => {
+      compress(response);
+    });
 });
 
-// check box on file select
-$('input').on("change", function(event){
-  console.log(event.currentTarget.value)
+function compress(source_img_obj) {
+	var cvs = document.createElement("canvas");
+    cvs.width = source_img_obj.width;
+    cvs.height = source_img_obj.height;
+    var ctx = cvs.getContext("2d").drawImage(source_img_obj, 0, 0);
+    var newImageData = cvs.toDataURL("image/jpeg", 0.5);
+    result_image_obj = newImageData;
+}
+
+//Add Photo
+$(document).on("click", "#upload", function(){
+  // Update entry
+
+  var url = "https://s3.amazonaws.com/ash-tree-photos";
+  var base64ImageContent = result_image_obj.replace(/^data:image\/(png|jpeg);base64,/, "");
+  var blob = base64ToBlob(base64ImageContent, 'image/jpeg');
+  var blobFile = new File([blob], img_name);
+  var formData = new FormData();
+  formData.append('key', blobFile.name);
+  formData.append('file', blobFile);
+
+  $.ajax({
+      url: url,
+      type: "POST",
+      cache: false,
+      contentType: false,
+      processData: false,
+      data: formData
+    }).done(function(e){
+              alert('done!');
+              getPreciseLocation()
+                .then(createAshTree);
+          });
 });
+
+function base64ToBlob(base64, mime)
+{
+    mime = mime || '';
+    var sliceSize = 1024;
+    var byteChars = window.atob(base64);
+    var byteArrays = [];
+
+    for (var offset = 0, len = byteChars.length; offset < len; offset += sliceSize) {
+        var slice = byteChars.slice(offset, offset + sliceSize);
+
+        var byteNumbers = new Array(slice.length);
+        for (var i = 0; i < slice.length; i++) {
+            byteNumbers[i] = slice.charCodeAt(i);
+        }
+
+        var byteArray = new Uint8Array(byteNumbers);
+
+        byteArrays.push(byteArray);
+    }
+
+    return new Blob(byteArrays, {type: mime});
+}

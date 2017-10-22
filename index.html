@@ -38,7 +38,7 @@
 
 <p>   TAKE PICTURES</p>
    <!--Push pictures to storage-->
-<form action="https://s3.amazonaws.com/ash-tree-photos" method="post" enctype="multipart/form-data">
+<form id="uploadImage" action="https://s3.amazonaws.com/ash-tree-photos" method="post" enctype="multipart/form-data">
       <input type="hidden" name="key" value="uploads/${filename}">
 
   <p><span class="btn btn-success fileinput-button"><img src="images/tree.jpg" alt="Tree" align="middle" width="20%">   &nbsp;&nbsp;
@@ -53,7 +53,9 @@
          <span class="btn btn-success fileinput-button"><span>Bark</span>
          <input type="file" accept="image/*" name="bark">   </span></p>
    <!--Exit Form Button foo-->
-   <p> <input type="submit" value="All done"></p>
+   <button type="button" id="upload" class="btn btn-primary" value="All done">
+     All done
+   </button>
   </form>
 
 
@@ -68,7 +70,6 @@
 
     <!-- My custom js -->
     <script src="contentful_script.js"></script>
-    <script src="compress.js"></script>
 
   </body>
 </html>
