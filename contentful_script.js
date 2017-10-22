@@ -50,9 +50,7 @@ function createAshTreeImages(entry) {
 }
 
 function done(entry){
-  console.log(entry)
   window.location.replace('./uploadsuccess.html')
-  alert("done!")
 }
 
 function createAshTree(data) {
