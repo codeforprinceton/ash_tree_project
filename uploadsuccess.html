@@ -3,12 +3,40 @@
   <head>
     <link rel="stylesheet" href="success.css">
   </head>
+  <style>
+    /* Always set the map height explicitly to define the size of the div
+     * element that contains the map. */
+    #mymap {
+      height: 300px;
+      width:300px;
+    }
+  </style>
   <body>
     <h1>CONGRATS!</h1>
     <div id="successImageWrap">
-      <img src='http://caseiv.org/wp-content/uploads/2016/02/early-bird-thumbs-up-245x300.jpg' alt='Bird Thumbs Up'>
+      <img height="200px" src='http://caseiv.org/wp-content/uploads/2016/02/early-bird-thumbs-up-245x300.jpg' alt='Bird Thumbs Up'>
+      <center><div id="mymap"></div></center>
     </div>
     <h2>Thank You For Your Help</h2>
+
     <a href='index.html'>Go back to the homepage</a>
+    <script>
+            var mymap;
+        var mylat = 40.3516366;
+        var mylon = -74.6602049;
+            function initMap() {
+                mymap = new google.maps.Map(document.getElementById('mymap'), {
+center: {lat: mylat, lng: mylon},
+                    zoom: 14
+                });
+                mymarker = new google.maps.Marker({
+                    position:  {lat: mylat, lng: mylon},
+                    map: mymap,
+                    title: 'blah!'
+                });
+            }
+     </script>
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8PHbWdt77mc0Bpy7J9-NO5IFzh-V-NG4&callback=initMap"
+   async defer></script>
   </body>
 </html>
