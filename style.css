@@ -33,7 +33,7 @@ body {
     height: 12em;
     border: 0.1em solid green;
     border-radius: 100%;
-    background-image: url('landing.jpg');
+    background-image: url('./resources/images/landing.jpg');
     background-size: contain;
     margin-left: 5em;	
 }
