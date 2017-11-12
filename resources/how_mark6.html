@@ -3,33 +3,102 @@
 <html>
 
 <head>
-<link href="style.css" rel="stylesheet" type="text/css">
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script> 
+
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div id="landing">
+<nav class="navbar navbar-expand-sm navbar-light bg-success">
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
 
-	<p class="title">How to mark a tree</p>
-	 	
-	<p>Bark boring - The larva will bore into the bark to find a safe home. These holes indicate that larva may be inside the tree.</p>
-	
-	<img src="./images/bark_boring.PNG" />
+	<!-- Brand -->
+	<a class="navbar-brand" href="../index.html">Ash Tree Defender</a>
 
-	<div id="footer">
-				<table>
-			<tr>
-				<td>
-					<a href="how_mark5.html"><p class="link">Back</p></a>
-				</td>
-				<td>
-					<a href="how_mark7.html"><p class="link">Next</p></a>
-				</td>
-			</tr>
-		</table>
+	<!-- Links -->
+	<div class="collapse navbar-collapse" id="nav-content">   
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link" href="how_mark1.html">How to help</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="../upload_image.html">Mark a tree</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="learn.html">Learn more</a>
+			</li>
+		</ul>
 	</div>
-		
-</div>
+</nav>
+
+<div id="landing" class="container">
+
+	<div class="row text-center">
+
+		<div class="col">
+
+			<h3>Are these trees infected? Some signs.</h3>
+	 	
+			<h5>Bark boring</h5>
+
+			<p>The larva will bore into the bark to find a safe home. These holes indicate that larva may be inside the tree.</p>
+	
+			<img src="./images/bark_boring.PNG" class="mx-auto" />
+
+		</div>
+
+	</div>
+
+	<div class="row"><div class="col"><p></p></div></div>
+
+	<div class="row">
+
+		<div class="col">
+
+			<nav>
+				<ul class="pagination justify-content-center">
+					<li class="page-item">
+						<a href="how_mark5.html" class="page-link" aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+					<li class="page-item"><a href="how_mark1.html" class="page-link">1</a></li>
+					<li class="page-item"><a href="how_mark2.html" class="page-link">2</a></li>
+					<li class="page-item"><a href="how_mark3.html" class="page-link">3</a></li>
+					<li class="page-item"><a href="how_mark4.html" class="page-link">4</a></li>
+					<li class="page-item"><a href="how_mark5.html" class="page-link">5</a></li>
+					<li class="page-item active"><a href="#" class="page-link">6</a></li>
+					<li class="page-item"><a href="how_mark7.html" class="page-link">7</a></li>
+					<li class="page-item"><a href="how_mark8.html" class="page-link">8</a></li>
+					<li class="page-item"><a href="how_mark9.html" class="page-link">9</a></li>
+					<li class="page-item">
+						<a href="how_mark7.html" class="page-link" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+
+		</div>
+
+	</div>
 
 </body>
 
